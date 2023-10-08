@@ -36,6 +36,11 @@ class MainActivity : AppCompatActivity() {
                 like?.setImageResource(R.drawable.ic_like_red_48)
             }
 
+            root.setOnClickListener{
+                println("click on root")
+            }
+
+
             like?.setOnClickListener {
                 println("click on Like")
                 post.likedByMe=!post.likedByMe
@@ -44,6 +49,7 @@ class MainActivity : AppCompatActivity() {
                 likeCount.text= addLike(post.countLikes)
             }
             repost?.setOnClickListener {
+                println("click on repost")
                 repostCount.text=post.countRepost++.toString()
             }
         }
