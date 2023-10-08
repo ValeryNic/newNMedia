@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="menu">меню</string>
+    <string name="like">лайков</string>
+    <string name="repost">репостов</string>
+    <string name="view">просмотров</string>
+</resources>

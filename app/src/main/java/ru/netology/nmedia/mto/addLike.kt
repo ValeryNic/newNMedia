@@ -1,12 +1,16 @@
 package ru.netology.nmedia.mto
 
+import java.text.Format
+
 fun addLike(count:Int):String{
 
     val result = when (count) {
-        in 0.. 1000 -> count.toString()
-        in 1000 ..10000 -> (Math.abs(count.toDouble() / 1000).toString())+"."+(Math.abs(count.toDouble()/1000 - Math.abs(count.toDouble()/1000))/100) + "K"
-        in 10000..1000000 -> (Math.abs(count/1000)).toString() + "K"
-        else -> (Math.abs(count.toDouble() / 1000000).toString())+"."+(Math.abs(count.toDouble()/1000000 - Math.abs(count.toDouble()/1000000))/100000)+"M"
+        in 0.. 999 -> count.toString()
+        in 1000 ..9999 -> ((count.toDouble()/100).toInt().toDouble()/10).toString() + "K"
+        in 10000..999999 -> (Math.abs(count/1000)).toString() + "K"
+        else -> ((count.toDouble() / 100000).toInt().toDouble()/10).toString()+"M"
     }
     return result
 }
+
+

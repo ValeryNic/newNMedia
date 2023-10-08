@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name" translatable="false">NMedia</string>
+    <string name="menu">menu</string>
+    <string name="like">Description_like</string>
+    <string name="repost">Description_repost</string>
+    <string name="view">Description_view</string>
+</resources>
