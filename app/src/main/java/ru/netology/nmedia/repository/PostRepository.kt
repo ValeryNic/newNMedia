@@ -7,4 +7,5 @@ interface PostRepository {
     fun get():LiveData<Post>
 
     fun like()
+    fun repost()
 }

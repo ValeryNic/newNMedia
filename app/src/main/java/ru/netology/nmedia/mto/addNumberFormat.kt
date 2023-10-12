@@ -1,7 +1,7 @@
 package ru.netology.nmedia.mto
 
 
-fun addLike(count:Int):String{
+fun addNumberFormat(count:Int):String{
 
     val result = when (count) {
         in 0.. 999 -> count.toString()
