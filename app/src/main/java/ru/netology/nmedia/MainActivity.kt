@@ -3,10 +3,10 @@ package ru.netology.nmedia
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import ru.netology.mynewproject.databinding.ActivityMainBinding
-import ru.netology.mynewproject.dto.Post
-import ru.netology.mynewproject.viewmodel.PostViewModel
-
+import ru.netology.nmedia.databinding.ActivityMainBinding
+import ru.netology.nmedia.dto.Post
+import ru.netology.nmedia.ViewModel.PostViewModel
+import ru.netology.nmedia.mto.addNumberFormat
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

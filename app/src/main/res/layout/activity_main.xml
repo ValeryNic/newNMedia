@@ -7,7 +7,7 @@
     android:padding="@dimen/common_padding"
     tools:context=".MainActivity">
 
-    <ImageView
+    <ImageButton
         android:id="@+id/avatar"
         android:layout_width="@dimen/posts_avatar_size"
         android:layout_height="@dimen/posts_avatar_size"

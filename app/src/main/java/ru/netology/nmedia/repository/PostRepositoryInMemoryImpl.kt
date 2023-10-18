@@ -27,7 +27,6 @@ class PostRepositoryInMemoryImpl: PostRepository {
     }
     override fun repost(){
         post=post.copy(countRepost=post.countRepost+1)
-        println(post.countRepost.toString())
         data.value=post
         println("repost2")
     }
