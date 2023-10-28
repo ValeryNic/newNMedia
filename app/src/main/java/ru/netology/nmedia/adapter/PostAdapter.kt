@@ -44,6 +44,7 @@ class PostViewHolder(
             repost.setOnClickListener{
                 onRepostListener(post)
             }
+            likeCount.text= addCount(post.countLikes)
             repostCount.text= addCount(post.countRepost)
         }
     }

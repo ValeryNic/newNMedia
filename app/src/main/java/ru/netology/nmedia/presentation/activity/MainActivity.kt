@@ -19,10 +19,13 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val viewModel: PostViewModel by viewModels()
-        val adapter= PostAdapter{
-            viewModel.likeById(it.id)
+        val adapter= PostAdapter(
+            onLikeListener = {
+            viewModel.likeById(it.id)},
+            onRepostListener = {
             viewModel.repostById(it.id)
         }
+        )
         binding.reciclerList.adapter=adapter
         viewModel.data.observe(this){
             posts ->
