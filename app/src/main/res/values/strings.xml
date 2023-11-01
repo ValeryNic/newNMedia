@@ -4,4 +4,13 @@
     <string name="like">Description_like</string>
     <string name="repost">Description_repost</string>
     <string name="view">Description_view</string>
+    <string name="menu_remove">Remove</string>
+    <string name="post_text">text_Post</string>
+    <string name="error_empty_content">content_cannot_be_empty</string>
+    <string name="save">Description_save</string>
+    <string name="menu_edit">Edit</string>
+    <string name="input">Description_input</string>
+    <string name="backup">Description_backup</string>
+    <string name="edit_message">Edit_Message</string>
+
 </resources>

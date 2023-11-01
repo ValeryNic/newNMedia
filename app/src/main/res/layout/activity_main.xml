@@ -1,19 +1,134 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="@dimen/common_padding"
     tools:context=".presentation.activity.MainActivity">
+
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/reciclerList"
+        android:id="@+id/recyclerList"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="148dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:listitem="@layout/card_post"
-        tools:itemCount="3"
-    />
+        app:layout_constraintBottom_toTopOf="@id/barrierTop"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="16dp"
+        tools:listitem="@layout/card_post" />
 
-</FrameLayout>
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/group"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="visible"
+        app:constraint_referenced_ids="barrierTopUp,input,edit_message,content_copy,backup" />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/barrierTopUp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:constraint_referenced_ids="input"
+        app:barrierDirection="top"
+        />
+
+    <ImageButton
+        android:id="@+id/input"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_mode_edit_48"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/input"
+        android:layout_marginTop="48dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/content_copy"
+        app:layout_constraintTop_toBottomOf="@id/barrierTopUp"
+        app:layout_constraintBottom_toTopOf="@id/barrierTop"
+
+        />
+
+    <EditText
+        android:id="@+id/edit_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="16dp"
+        android:background="@android:color/transparent"
+        android:gravity="start"
+        android:text="@string/edit_message"
+        android:textColor="#0000ff"
+        app:layout_constraintBottom_toTopOf="@id/content_copy"
+        app:layout_constraintStart_toStartOf="@id/content_copy"
+        app:layout_constraintTop_toBottomOf="@id/barrierTopUp" />
+
+    <EditText
+        android:id="@+id/content_copy"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/common_spacing"
+        android:layout_marginTop="@dimen/common_spacing"
+        android:layout_marginEnd="@dimen/common_spacing"
+        android:ellipsize="end"
+        android:singleLine="false"
+        android:textSize="12sp"
+        android:inputType="textLongMessage"
+        app:layout_constraintBottom_toTopOf="@id/barrierTop"
+        app:layout_constraintEnd_toStartOf="@id/backup"
+        app:layout_constraintStart_toEndOf="@id/input"
+        app:layout_constraintTop_toTopOf="@id/edit_message" />
+    <ImageButton
+        android:id="@+id/backup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_clear_48"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/backup"
+        android:layout_marginTop="36dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/barrierTopUp"
+        app:layout_constraintBottom_toTopOf="@id/barrierTop"
+        app:layout_constraintStart_toEndOf="@id/content_copy"
+        />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/barrierTop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="top"
+        app:constraint_referenced_ids="content,save"
+
+        />
+
+    <EditText
+        android:id="@+id/content"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@android:color/transparent"
+        android:gravity="start"
+        android:hint="@string/post_text"
+        android:importantForAutofill="no"
+        android:inputType="textMultiLine"
+        android:maxLines="6"
+        android:padding="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/save"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/barrierTop" />
+
+    <ImageButton
+        android:id="@+id/save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/save"
+        android:src="@drawable/ic_post_add_48"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/content"
+        app:layout_constraintTop_toBottomOf="@id/barrierTop" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
