@@ -79,17 +79,18 @@
         app:constraint_referenced_ids="content"/>
 
 
-    <ImageButton
+    <com.google.android.material.checkbox.MaterialCheckBox
         android:id="@+id/like"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@android:color/transparent"
         android:contentDescription="@string/like"
         android:layout_marginStart="@dimen/common_spacing"
         android:layout_marginTop="@dimen/common_spacing"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/barrier_top1"
-        app:srcCompat="@drawable/ic_like_red_48"/>
+        android:button="@drawable/ic_like_selector"
+        style="@style/Widget.AppTheme.LikeCheckBox"
+        />
 
     <TextView
         android:id="@+id/like_count"

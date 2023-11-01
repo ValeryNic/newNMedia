@@ -42,10 +42,9 @@ class PostViewHolder(
             author.text = post.author
             published.text = post.published
             content.text = post.content
-            like.setImageResource(
-                if (post.likedByMe) R.drawable.ic_like_red_48 else R.drawable.ic_like_white_48
-            )
-            like.setOnClickListener {
+
+            like.isChecked=post.likedByMe
+            like.setOnClickListener{
                 onInterationListener.like(post)
             }
             repost.setOnClickListener{

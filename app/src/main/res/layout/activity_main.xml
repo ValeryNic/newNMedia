@@ -71,7 +71,7 @@
         android:layout_marginTop="@dimen/common_spacing"
         android:layout_marginEnd="@dimen/common_spacing"
         android:ellipsize="end"
-        android:singleLine="false"
+        android:singleLine="true"
         android:textSize="12sp"
         android:inputType="textLongMessage"
         app:layout_constraintBottom_toTopOf="@id/barrierTop"
