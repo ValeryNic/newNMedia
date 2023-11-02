@@ -44,9 +44,11 @@ class PostViewHolder(
             content.text = post.content
 
             like.isChecked=post.likedByMe
-            like.setOnClickListener{
-                onInterationListener.like(post)
-            }
+            like.text= addCount( post.countLikes)
+
+            //like.setOnClickListener{
+            //    onInterationListener.like(post)
+            //}
             repost.setOnClickListener{
                 onInterationListener.repost(post)
             }

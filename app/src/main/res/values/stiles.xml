@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="Widget.AppTheme.LikeCheckBox"
-        parent="Widget.MaterialComponents.CompoundButton.CheckBox">
-        <item name="buttonTint">@color/like_selector</item>
+    <style name="Widget.AppTheme.LikeButtom"
+        parent="Widget.MaterialComponents.Button.TextButton.Icon">
+        <item name="iconTint">@color/like_selector</item>
+        <item name="android:minWidth">@dimen/icon_buttom_min_saize</item>
+        <item name="android:minHeight">@dimen/icon_buttom_min_saize</item>
     </style>
 </resources>
