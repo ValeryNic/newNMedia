@@ -49,7 +49,7 @@
 
         />
 
-    <EditText
+    <TextView
         android:id="@+id/edit_message"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -63,7 +63,7 @@
         app:layout_constraintStart_toStartOf="@id/content_copy"
         app:layout_constraintTop_toBottomOf="@id/barrierTopUp" />
 
-    <EditText
+    <TextView
         android:id="@+id/content_copy"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -73,7 +73,6 @@
         android:ellipsize="end"
         android:singleLine="false"
         android:textSize="12sp"
-        android:inputType="textLongMessage"
         app:layout_constraintBottom_toTopOf="@id/barrierTop"
         app:layout_constraintEnd_toStartOf="@id/backup"
         app:layout_constraintStart_toEndOf="@id/input"

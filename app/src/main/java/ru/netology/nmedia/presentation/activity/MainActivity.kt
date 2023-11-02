@@ -67,7 +67,6 @@ class MainActivity : AppCompatActivity() {
             }
             viewModel.chandeContentAndSave(text)
 
-            viewModel.save()
             binding.content.setText("")//сброс курсора
             binding.content.clearFocus()//сброс фокуса
             AndroidUtils.hideKeyboard(it)//сброс клавиатуры
