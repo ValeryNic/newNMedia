@@ -55,6 +55,7 @@ class MainActivity : AppCompatActivity() {
         viewModel.edited.observe(this){
             if(it.id!=0L) {
                 binding.content.setText(it.content)
+
                 binding.content.focusAndShowKeyboard()
             }
         }
@@ -67,7 +68,7 @@ class MainActivity : AppCompatActivity() {
             }
             viewModel.chandeContentAndSave(text)
 
-            viewModel.save()
+
             binding.content.setText("")//сброс курсора
             binding.content.clearFocus()//сброс фокуса
             AndroidUtils.hideKeyboard(it)//сброс клавиатуры

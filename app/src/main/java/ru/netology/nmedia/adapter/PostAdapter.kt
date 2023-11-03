@@ -43,15 +43,18 @@ class PostViewHolder(
             published.text = post.published
             content.text = post.content
 
+            //like.setText(addCount( if(post.likedByMe)  post.countLikes+1 else post.countLikes-1))
             like.isChecked=post.likedByMe
-            like.text= addCount( post.countLikes)
+            like.text= addCount( post.countLikes+1)
+            //like.text=addCount( if(post.likedByMe)  post.countLikes+1 else post.countLikes-1)
+            repost.text= addCount(post.countRepost+1)
 
             //like.setOnClickListener{
             //    onInterationListener.like(post)
             //}
-            repost.setOnClickListener{
-                onInterationListener.repost(post)
-            }
+            //repost.setOnClickListener{
+            //    onInterationListener.repost(post)
+            //}
             menu.setOnClickListener{
                 PopupMenu(it.context,it).apply{
                     inflate(R.menu.menu_options)
@@ -71,8 +74,6 @@ class PostViewHolder(
                     }
                 }.show()
             }
-            likeCount.text= addCount(post.countLikes)
-            repostCount.text= addCount(post.countRepost)
         }
     }
 }
