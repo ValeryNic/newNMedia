@@ -70,6 +70,7 @@ class PostViewHolder(
                     }
                 }.show()
             }
+            backup.setOn
             likeCount.text= addCount(post.countLikes)
             repostCount.text= addCount(post.countRepost)
         }

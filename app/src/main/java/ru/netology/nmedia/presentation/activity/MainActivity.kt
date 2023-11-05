@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.widget.Toast
 import android.widget.Toast.makeText
 import androidx.activity.viewModels
+import androidx.core.view.isVisible
 import ru.netology.nmedia.adapter.PostAdapter
 import ru.netology.nmedia.R
 import ru.netology.nmedia.databinding.ActivityMainBinding
@@ -23,6 +24,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val viewModel: PostViewModel by viewModels()
+
         val adapter= PostAdapter(object: OnInterationListener {
             override fun like(post: Post) {
                 viewModel.likeById(post.id)
@@ -38,10 +40,8 @@ class MainActivity : AppCompatActivity() {
             override fun edit(post: Post) {
                 viewModel.edit(post)
             }
-            }
+        })
 
-
-        )
         binding.recyclerList.adapter=adapter
         viewModel.data.observe(this){
             posts ->
@@ -72,7 +72,14 @@ class MainActivity : AppCompatActivity() {
             AndroidUtils.hideKeyboard(it)//сброс клавиатуры
 
         }
-
+        binding.backup.setOnClickListener{
+            viewModel.clearEdit()
+            binding.contentCopy.text=""
+            binding.content.setText("")//сброс курсора
+            binding.content.clearFocus()//сброс фокуса
+            AndroidUtils.hideKeyboard(it)//сброс клавиатуры
+            binding.group.isVisible=false
+        }
     }
 
 

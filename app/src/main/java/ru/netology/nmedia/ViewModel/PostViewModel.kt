@@ -22,12 +22,7 @@ class PostViewModel:ViewModel() {
     fun likeById(id:Long)=repository.likeById(id)
     fun repostById(id:Long)=repository.repostById(id)
     fun removeById(id: Long)=repository.removeById(id)
-    fun save(){
-        edited.value?.let {
-        repository.save(it)
-        }
-        edited.value=empty
-    }
+
     fun chandeContentAndSave(content:String) {
         edited.value?.let {
             val text = content.trim()
@@ -46,4 +41,8 @@ class PostViewModel:ViewModel() {
     fun edit(post: Post){
         edited.value=post
     }
+    fun clearEdit(){
+        edited.value= empty
+    }
+
 }
