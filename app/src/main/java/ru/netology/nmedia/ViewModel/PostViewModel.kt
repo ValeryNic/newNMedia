@@ -28,7 +28,7 @@ class PostViewModel:ViewModel() {
         }
         edited.value=empty
     }
-    fun chandeContentAndSave(content:String) {
+    fun changeContentAndSave(content:String) {
         edited.value?.let {
             val text = content.trim()
             //if (it.content == text) {
@@ -45,5 +45,9 @@ class PostViewModel:ViewModel() {
     }
     fun edit(post: Post){
         edited.value=post
+    }
+
+    fun changeContentAndSave(text: String) {
+
     }
 }

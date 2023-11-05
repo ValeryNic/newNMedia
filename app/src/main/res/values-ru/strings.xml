@@ -7,6 +7,7 @@
     <string name="menu_remove">Удаление</string>
     <string name="input">ввод_текста</string>
     <string name="edit_message">место_ввода</string>
+    <string name="chooser_share_post">ввод чузера</string>
     <string name="remove">удаление</string>
     <string name="post_text">текст_поста</string>
     <string name="error_empty_content">в_тексте_пусто!</string>
