@@ -49,12 +49,13 @@ class PostViewHolder(
             //like.text=addCount( if(post.likedByMe)  post.countLikes+1 else post.countLikes-1)
             repost.text= addCount(post.countRepost+1)
 
-            //like.setOnClickListener{
-            //    onInterationListener.like(post)
-            //}
-            //repost.setOnClickListener{
-            //    onInterationListener.repost(post)
-            //}
+
+            like.setOnClickListener{
+                onInterationListener.like(post)
+            }
+            repost.setOnClickListener{
+                onInterationListener.repost(post)
+            }
             menu.setOnClickListener{
                 PopupMenu(it.context,it).apply{
                     inflate(R.menu.menu_options)
