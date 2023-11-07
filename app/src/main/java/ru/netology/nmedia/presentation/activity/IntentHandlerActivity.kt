@@ -1,41 +1,45 @@
-package ru.netology.nmedia.presentation.activity
+package ru.netology.nmedia.activity
 
+import android.R.string.ok
+import android.content.Intent
 import android.os.Bundle
-import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.navigateUp
-import androidx.navigation.ui.setupActionBarWithNavController
-import ru.netology.nmedia.R
+import com.google.android.material.snackbar.BaseTransientBottomBar.LENGTH_INDEFINITE
 import ru.netology.nmedia.databinding.ActivityIntentHandlerBinding
+import com.google.android.material.snackbar.Snackbar
+import ru.netology.nmedia.R
 
 class IntentHandlerActivity : AppCompatActivity() {
-
-    private lateinit var appBarConfiguration: AppBarConfiguration
-    private lateinit var binding: ActivityIntentHandlerBinding
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        binding = ActivityIntentHandlerBinding.inflate(layoutInflater)
+        val binding = ActivityIntentHandlerBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        setSupportActionBar(binding.toolbar)
+        intent?.let {
+            if (it.action != Intent.ACTION_SEND) {
+                return@let
+            }
 
-        val navController = findNavController(R.id.nav_host_fragment_content_intent_handler)
-        appBarConfiguration = AppBarConfiguration(navController.graph)
-        setupActionBarWithNavController(navController, appBarConfiguration)
-
-        binding.fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show()
+            val text = it.getStringExtra(Intent.EXTRA_TEXT)
+            if (text.isNullOrBlank()) {
+                Snackbar.make(binding.root, R.string.error_empty_content, LENGTH_INDEFINITE)
+                    .setAction(ok) {
+                        finish()
+                    }
+                    .show()
+                return@let
+            }else {
+                Snackbar.make(binding.root, text, LENGTH_INDEFINITE)
+                    .setAction(ok) {
+                        finish()
+                    }
+                binding.contentTextView.setText(text)
+                return@let
+            }
         }
     }
-
-    override fun onSupportNavigateUp(): Boolean {
-        val navController = findNavController(R.id.nav_host_fragment_content_intent_handler)
-        return navController.navigateUp(appBarConfiguration)
-                || super.onSupportNavigateUp()
-    }
+    //Способ с нарушением принципа Solid - один метод один автор
+    //override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+    //    super.onActivityResult(requestCode, resultCode, data)
+    //}
 }

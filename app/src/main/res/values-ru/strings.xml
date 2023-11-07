@@ -7,11 +7,12 @@
     <string name="menu_remove">Удаление</string>
     <string name="input">ввод_текста</string>
     <string name="edit_message">место_ввода</string>
-    <string name="chooser_share_post">ввод чузера</string>
-    <string name="remove">удаление</string>
+    <string name="chooser_share_post">поделиться</string>
+    <string name="remove">удаление_доп</string>
     <string name="post_text">текст_поста</string>
     <string name="error_empty_content">в_тексте_пусто!</string>
     <string name="save">Сохранить</string>
     <string name="menu_edit">Редактирование</string>
     <string name="backup">стереть</string>
+    <string name="add_post">Добавить_пост</string>
 </resources>

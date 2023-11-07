@@ -3,6 +3,7 @@ package ru.netology.nmedia.presentation.activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.activity.result.launch
 import android.widget.Toast
 import android.widget.Toast.makeText
 import androidx.activity.viewModels
@@ -11,6 +12,7 @@ import ru.netology.nmedia.adapter.PostAdapter
 import ru.netology.nmedia.R
 import ru.netology.nmedia.databinding.ActivityMainBinding
 import ru.netology.nmedia.ViewModel.PostViewModel
+import ru.netology.nmedia.activity.NewPostResultContract
 import ru.netology.nmedia.adapter.OnInterationListener
 import ru.netology.nmedia.dto.Post
 import ru.netology.nmedia.util.AndroidUtils
@@ -24,14 +26,15 @@ class MainActivity : AppCompatActivity() {
         val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+
         val viewModel: PostViewModel by viewModels()
         val adapter= PostAdapter(object: OnInterationListener {
             override fun like(post: Post) {
                 viewModel.likeById(post.id)
             }
 
-            //override fun repost(post: Post) {
-            //    viewModel.repostById(post.id)
+            //override fun share(post: Post) {
+            //    viewModel.shareById(post.id)
             //}
             override fun remove(post: Post) {
                 viewModel.removeById(post.id)
@@ -40,13 +43,16 @@ class MainActivity : AppCompatActivity() {
             override fun edit(post: Post) {
                 viewModel.edit(post)
             }
-            override fun repost(post: Post){
+            override fun share(post: Post){
+                viewModel.shareById(post.id)
                 val intent=Intent().apply{
-                    action=Intent.ACTION_SEND
+                    action=Intent.ACTION_SEND//можно выбирать из choose
                     putExtra(Intent.EXTRA_TEXT, post.content)
                     type="text/plain"
+                    
                 }
                 //startActivity(intent) - куцый вариант
+                //этот наполненней -
                 val shareIntent=Intent.createChooser(intent, getString(R.string.chooser_share_post))
                 startActivity(shareIntent)
             }
@@ -54,45 +60,26 @@ class MainActivity : AppCompatActivity() {
 
 
         )
-        binding.recyclerList.adapter=adapter
+        binding.list.adapter=adapter
         viewModel.data.observe(this){
             posts ->
             val newPost=posts.size > adapter.currentList.size
             adapter.submitList(posts){//по завершении потока - прокрутка
                 if(newPost) {
-                    binding.recyclerList.smoothScrollToPosition(0)
+                    binding.list.smoothScrollToPosition(0)
                 }
             }
         }
-        viewModel.edited.observe(this){
-            if(it.id!=0L) {
-                binding.content.setText(it.content)
 
-                binding.content.focusAndShowKeyboard()
-            }
+
+
+        val newPostLauncher = registerForActivityResult(NewPostResultContract()) { result ->
+            result ?: return@registerForActivityResult
+            viewModel.changeContentAndSave(result)
         }
-        val newPostLauncher= this.registerForActivityResult(NewPostResultContract){text:String ->
-            text ?: return@registerForActivityResult
-            viewModel.changeContentAndSave(text)
-            viewModel.save()
-        }
-        binding.fab.setOnClickListener{
-            newPostLaucher.launch()
-        }
-        binding.save.setOnClickListener{
-            val text=binding.content.text.toString()
 
-            if (text.isEmpty()){
-                Toast.makeText(this@MainActivity, R.string.error_empty_content,Toast.LENGTH_LONG)
-                return@setOnClickListener
-            }
-            viewModel.changeContentAndSave(text)
-
-
-            binding.content.setText("")//сброс курсора
-            binding.content.clearFocus()//сброс фокуса
-            AndroidUtils.hideKeyboard(it)//сброс клавиатуры
-
+        binding.fab.setOnClickListener {
+            newPostLauncher.launch()
         }
 
     }

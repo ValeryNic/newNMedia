@@ -14,7 +14,7 @@ interface OnInterationListener{
     fun like(post:Post)
     fun remove(post:Post)
     fun edit(post:Post)
-    fun repost(post: Post)
+    fun share(post: Post)
 }
 
 class PostAdapter(private val onInterationListener: OnInterationListener,
@@ -44,17 +44,18 @@ class PostViewHolder(
             content.text = post.content
 
             //like.setText(addCount( if(post.likedByMe)  post.countLikes+1 else post.countLikes-1))
-            like.isChecked=post.likedByMe
-            like.text= addCount( post.countLikes+1)
+            onLike.isChecked=post.likedByMe
+            onLike.text= addCount( post.countLikes+1)
             //like.text=addCount( if(post.likedByMe)  post.countLikes+1 else post.countLikes-1)
-            repost.text= addCount(post.countRepost+1)
+            onShare.text= addCount(post.countShare+1)
 
-            //like.setOnClickListener{
-            //    onInterationListener.like(post)
-            //}
-            //repost.setOnClickListener{
-            //    onInterationListener.repost(post)
-            //}
+            onLike.setOnClickListener{
+                onInterationListener.like(post)
+            }
+            onShare.setOnClickListener{
+                onInterationListener.share(post)
+
+            }
             menu.setOnClickListener{
                 PopupMenu(it.context,it).apply{
                     inflate(R.menu.menu_options)
