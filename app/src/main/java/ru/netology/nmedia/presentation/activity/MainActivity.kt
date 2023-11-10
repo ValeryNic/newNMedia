@@ -28,6 +28,10 @@ class MainActivity : AppCompatActivity() {
 
 
         val viewModel: PostViewModel by viewModels()
+        val EditPostLauncher = registerForActivityResult(NewPostResultContract()) { result ->
+            result ?: return@registerForActivityResult
+            viewModel.changeContentAndSave(result)
+        }
         val adapter= PostAdapter(object: OnInterationListener {
             override fun like(post: Post) {
                 viewModel.likeById(post.id)
@@ -40,7 +44,24 @@ class MainActivity : AppCompatActivity() {
                 viewModel.removeById(post.id)
             }
 
+            override fun video(post: Post) {
+                if(post.videoByMe==true){
+                    val videoURL="https://www.youtube.com/watch?v=WhWc3b3KhnY"
+                    //Uri.parse: Intent(Intent.ACTION_VIEW, Uri.parse('url'))
+                    val intent=Intent().apply {
+                        putExtra(Intent.EXTRA_TEXT, videoURL)
+                    }
+                    EditPostLauncher.launch()
+                }
+            }
+
             override fun edit(post: Post) {
+                val intent=Intent().apply{
+                    //action=Intent.ACTION_SEND
+                    putExtra(Intent.EXTRA_TEXT, post.content)
+                    type="text/plain"
+                }
+                EditPostLauncher.launch()
                 viewModel.edit(post)
             }
             override fun share(post: Post){

@@ -13,7 +13,8 @@ class PostRepositoryInMemoryImpl: PostRepository {
         content = "Привет, это новая Нетология! Когда-то Нетология начиналась с интенсивов по онлайн-маркетингу. Затем появились курсы по дизайну, разработке, аналитике и управлению. Мы растём сами и помогаем расти студентам: от новичков до уверенных профессионалов. Но самое важное остаётся с нами: мы верим, что в каждом уже есть сила, которая заставляет хотеть больше, целиться выше, бежать быстрее. Наша миссия — помочь встать на путь роста и начать цепочку перемен → http://netolo.gy/fyb",
         likedByMe = false,
         countLikes = 4560,
-        countShare =0
+        countShare =0,
+        videoByMe = false
         ),
         Post(
             id=nextId++,
@@ -22,7 +23,8 @@ class PostRepositoryInMemoryImpl: PostRepository {
             content = "Привет, это новая Нетология! Когда-то Нетология начиналась с интенсивов по онлайн-маркетингу. Затем появились курсы по дизайну, разработке, аналитике и управлению. Мы растём сами и помогаем расти студентам: от новичков до уверенных профессионалов. Но самое важное остаётся с нами: мы верим, что в каждом уже есть сила, которая заставляет хотеть больше, целиться выше, бежать быстрее. Наша миссия — помочь встать на путь роста и начать цепочку перемен → http://netolo.gy/fyb",
             likedByMe = false,
             countLikes = 999,
-            countShare =0
+            countShare =0,
+            videoByMe = false
         ),
         Post(
             id=nextId++,
@@ -31,7 +33,8 @@ class PostRepositoryInMemoryImpl: PostRepository {
             content = "Привет, это новая Нетология! Когда-то Нетология начиналась с интенсивов по онлайн-маркетингу. Затем появились курсы по дизайну, разработке, аналитике и управлению. Мы растём сами и помогаем расти студентам: от новичков до уверенных профессионалов. Но самое важное остаётся с нами: мы верим, что в каждом уже есть сила, которая заставляет хотеть больше, целиться выше, бежать быстрее. Наша миссия — помочь встать на путь роста и начать цепочку перемен → http://netolo.gy/fyb",
             likedByMe = false,
             countLikes = 888,
-            countShare =0
+            countShare =0,
+            videoByMe = false
         ),
         Post(
             id = nextId++,
@@ -40,7 +43,8 @@ class PostRepositoryInMemoryImpl: PostRepository {
             published = "18 сентября в 10:12",
             likedByMe = false,
             countLikes = 888,
-            countShare =0
+            countShare =0,
+            videoByMe = false
         ),
         Post(
             id = nextId++,
@@ -49,7 +53,8 @@ class PostRepositoryInMemoryImpl: PostRepository {
             published = "19 сентября в 10:24",
             likedByMe = false,
             countLikes = 888,
-            countShare =0
+            countShare =0,
+            videoByMe = false
         ),
         Post(
             id = nextId++,
@@ -58,7 +63,8 @@ class PostRepositoryInMemoryImpl: PostRepository {
             published = "19 сентября в 14:12",
             likedByMe = false,
             countLikes = 888,
-            countShare =0
+            countShare =0,
+            videoByMe = false
         ),
         Post(
             id = nextId++,
@@ -67,7 +73,8 @@ class PostRepositoryInMemoryImpl: PostRepository {
             published = "20 сентября в 10:14",
             likedByMe = false,
             countLikes = 888,
-            countShare =0
+            countShare =0,
+            videoByMe = false
         ),
         Post(
             id = nextId++,
@@ -76,7 +83,8 @@ class PostRepositoryInMemoryImpl: PostRepository {
             published = "21 сентября в 10:12",
             likedByMe = false,
             countLikes = 888,
-            countShare =0
+            countShare =0,
+            videoByMe = false
         ),
         Post(
             id = nextId++,
@@ -85,7 +93,8 @@ class PostRepositoryInMemoryImpl: PostRepository {
             published = "22 сентября в 10:12",
             likedByMe = false,
             countLikes = 888,
-            countShare =0
+            countShare =0,
+            videoByMe = false
         ),
         Post(
             id = nextId++,
@@ -94,7 +103,8 @@ class PostRepositoryInMemoryImpl: PostRepository {
             published = "22 сентября в 10:14",
             likedByMe = false,
             countLikes = 888,
-            countShare =0
+            countShare =0,
+            videoByMe = false
         ),
         Post(
             id = nextId++,
@@ -103,7 +113,8 @@ class PostRepositoryInMemoryImpl: PostRepository {
             published = "23 сентября в 10:12",
             likedByMe = false,
             countLikes = 888,
-            countShare =0
+            countShare =0,
+            videoByMe = false
         ),
     ).reversed()
 
@@ -124,6 +135,7 @@ class PostRepositoryInMemoryImpl: PostRepository {
         }
         data.value = posts
     }
+    override fun videoById(id: Long){}
 
     override fun removeById(id: Long) {
         posts=posts.filter { it.id !=id }

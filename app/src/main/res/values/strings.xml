@@ -15,5 +15,6 @@
     <string name="chooser_share_post">Edit_chooser</string>
     <string name="remove">remove_next</string>
     <string name="add_post">Add post</string>
+    <string name="video">Description_video</string>
 
 </resources>
