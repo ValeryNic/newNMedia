@@ -1,10 +1,21 @@
 package ru.netology.nmedia.repository
-
-import androidx.lifecycle.LiveData
+import android.content.Context
 import androidx.lifecycle.MutableLiveData
 import ru.netology.nmedia.dto.Post
-class PostRepositoryInMemoryImpl: PostRepository {
+import androidx.lifecycle.LiveData
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
+
+
+//class PostRepositoryInMemoryImpl: PostRepository {
+class PostRepositoryJsonImpl(context: Context,):PostRepository{
+    private val gson = Gson()
+    private val prefs = context.getSharedPreferences("repo", Context.MODE_PRIVATE)
+    private val type = TypeToken.getParameterized(List::class.java, Post::class.java).type
+    private val postKey = "posts"
+    private val nextIdKey = "next_id"
     private var nextId:Long=0
+
     private var posts = listOf(
         Post(
         id=nextId++,
@@ -117,8 +128,19 @@ class PostRepositoryInMemoryImpl: PostRepository {
             videoByMe = false
         ),
     ).reversed()
-
     private val data=MutableLiveData(posts)
+    init {
+        prefs.getString(postKey, null)?.let {
+            posts = gson.fromJson(it, type)
+
+        }
+        nextId = prefs.getLong(nextIdKey, nextId)
+        data.value = posts
+    }
+
+
+
+
     override fun getAll(): LiveData<List<Post>> = data
 
     override fun likeById(id:Long) {
@@ -127,6 +149,7 @@ class PostRepositoryInMemoryImpl: PostRepository {
 
             }
         data.value = posts
+        sync()
         }
 
     override fun shareById(id:Long) {
@@ -134,12 +157,14 @@ class PostRepositoryInMemoryImpl: PostRepository {
             if (it.id != id) it else it.copy(countShare = it.countShare + 1)
         }
         data.value = posts
+        sync()
     }
     override fun videoById(id: Long){}
 
     override fun removeById(id: Long) {
         posts=posts.filter { it.id !=id }
         data.value=posts
+        sync()
     }
 
     override fun save(post: Post) {
@@ -158,6 +183,14 @@ class PostRepositoryInMemoryImpl: PostRepository {
             posts.map{ if(it.id!=post.id) it else it.copy(content=post.content)}
         }
         data.value=posts
+        sync()
         return
+    }
+    private fun sync() {
+        with(prefs.edit()) {
+            putString(postKey, gson.toJson(posts))
+            putLong(nextIdKey, nextId)
+            apply()
+        }
     }
 }
