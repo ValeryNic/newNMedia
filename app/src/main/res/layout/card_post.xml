@@ -77,13 +77,16 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/common_padding"
         app:layout_constraintTop_toTopOf="@id/barrier_top"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/onVideoButton"
         tools:text="gogogogogogo" />
+
     <Button
         android:id="@+id/onVideoButton"
         style="@style/Widget.AppTheme.IconButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="video"
         android:checkable="true"
         android:contentDescription="@string/like"
         android:insetTop="0dp"
@@ -91,14 +94,20 @@
         android:maxHeight="0dp"
         android:paddingTop="0dp"
         android:paddingBottom="0dp"
+        android:text="video"
+        android:visibility="invisible"
         app:icon="@drawable/ic_add_24"
-
-        />
+        app:layout_constraintBottom_toTopOf="@id/barrier_top1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/content"
+        tools:visibility="invisible" />
 
     <androidx.constraintlayout.widget.Barrier
         android:id="@+id/barrier_top1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/onVideoButton"
         app:barrierDirection="bottom"
         app:constraint_referenced_ids="content" />
 

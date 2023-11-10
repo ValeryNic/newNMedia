@@ -54,8 +54,9 @@ class PostViewHolder(
                 onInterationListener.like(post)
             }
             onShare.setOnClickListener{
-                onInterationListener.share(post)
-
+                if(post.videoByMe) {
+                    onInterationListener.share(post)
+                }
             }
             onVideoButton.setOnClickListener{
                 onInterationListener.video(post)
