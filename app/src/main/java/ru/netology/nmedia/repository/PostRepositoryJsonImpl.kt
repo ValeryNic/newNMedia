@@ -128,6 +128,11 @@ class PostRepositoryJsonImpl(context: Context,):PostRepository{
             videoByMe = false
         ),
     ).reversed()
+        set(value) {
+            field = value
+            data.value = value
+            sync()
+        }
     private val data=MutableLiveData(posts)
     init {
         prefs.getString(postKey, null)?.let {
@@ -145,26 +150,22 @@ class PostRepositoryJsonImpl(context: Context,):PostRepository{
 
     override fun likeById(id:Long) {
             posts = posts.map {
-                if (it.id != id) it else it.copy(likedByMe = !it.likedByMe, countLikes = it.countLikes+1)
+                if (it.id != id) it else it.copy(likedByMe = !it.likedByMe, countLikes = if(it.likedByMe) it.countLikes-1 else it.countLikes+1)
 
             }
-        data.value = posts
-        sync()
         }
 
     override fun shareById(id:Long) {
         posts = posts.map {
             if (it.id != id) it else it.copy(countShare = it.countShare + 1)
         }
-        data.value = posts
-        sync()
+
     }
     override fun videoById(id: Long){}
 
     override fun removeById(id: Long) {
         posts=posts.filter { it.id !=id }
-        data.value=posts
-        sync()
+
     }
 
     override fun save(post: Post) {
@@ -182,8 +183,7 @@ class PostRepositoryJsonImpl(context: Context,):PostRepository{
         } else {
             posts.map{ if(it.id!=post.id) it else it.copy(content=post.content)}
         }
-        data.value=posts
-        sync()
+
         return
     }
     private fun sync() {
