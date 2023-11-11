@@ -8,6 +8,7 @@ import ru.netology.nmedia.repository.PostRepositoryJsonImpl
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import ru.netology.nmedia.repository.PostRepositoryFileImpl
+import java.net.URL
 
 private val empty=Post(
     id=0,
@@ -17,7 +18,8 @@ private val empty=Post(
     countShare = 0,
     content = "",
     countLikes = 0,
-    videoByMe = false
+    videoByMe = false,
+    videoURL = URL("https://www.youtube.com/watch?v=WhWc3b3KhnY")
 )
 
 class PostViewModel(application: Application) : AndroidViewModel(application) {

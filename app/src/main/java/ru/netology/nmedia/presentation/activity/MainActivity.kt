@@ -1,6 +1,7 @@
 package ru.netology.nmedia.presentation.activity
 
 import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.result.launch
@@ -46,23 +47,14 @@ class MainActivity : AppCompatActivity() {
 
             override fun video(post: Post) {
                 if(post.videoByMe==true){
-                    val videoURL="https://www.youtube.com/watch?v=WhWc3b3KhnY"
-                    //Uri.parse: Intent(Intent.ACTION_VIEW, Uri.parse('url'))
-                    val intent=Intent().apply {
-                        putExtra(Intent.EXTRA_TEXT, videoURL)
-                    }
-                    EditPostLauncher.launch()
+                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse(post.videoURL.toString()))
+                    startActivity(intent)
                 }
             }
 
             override fun edit(post: Post) {
-                val intent=Intent().apply{
-                    //action=Intent.ACTION_SEND
-                    putExtra(Intent.EXTRA_TEXT, post.content)
-                    type="text/plain"
-                }
-                EditPostLauncher.launch()
                 viewModel.edit(post)
+                EditPostLauncher.launch(post.content)
             }
             override fun share(post: Post){
                 viewModel.shareById(post.id)
@@ -100,7 +92,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.fab.setOnClickListener {
-            newPostLauncher.launch()
+            newPostLauncher.launch(null)
         }
 
     }
