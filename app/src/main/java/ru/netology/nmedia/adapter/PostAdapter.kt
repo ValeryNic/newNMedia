@@ -60,10 +60,14 @@ class PostViewHolder(
                 }
             }
             onVideoButton.isVisible=post.videoByMe
+            onVideoButton1.isVisible=post.videoByMe
             onVideoButton.setOnClickListener{
                 onInterationListener.video(post)
             }
+<<<<<<< HEAD
             onVideoButton1.isVisible=post.videoByMe
+=======
+>>>>>>> json
             onVideoButton1.setOnClickListener{
                 onInterationListener.video(post)
             }

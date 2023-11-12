@@ -38,7 +38,10 @@ class PostRepositoryFileImpl(
         } else {
             nextId = 1L
         }
+<<<<<<< HEAD
 
+=======
+>>>>>>> json
         val filePost = context.filesDir.resolve(filePostName)
         if (filePost.exists()) {
             context.openFileInput(filePostName).bufferedReader().use {
@@ -94,11 +97,20 @@ class PostRepositoryFileImpl(
     }
 
     private fun sync() {
+<<<<<<< HEAD
         val filePostname="posts.json"
         context.openFileOutput(filePostname, Context.MODE_PRIVATE).bufferedWriter().use {
+=======
+        val filePostName="posts.json"
+        context.openFileOutput(filePostName, Context.MODE_PRIVATE).bufferedWriter().use {
+>>>>>>> json
             it.write(gson.toJson(posts))
         }
         context.filesDir.resolve(filePostName).writer().buffered().use {
+            it.write(gson.toJson(posts))
+        }
+        val fileNextIdName = "next_id.json"
+        context.openFileOutput(fileNextIdName, Context.MODE_PRIVATE).bufferedWriter().use {
             it.write(gson.toJson(posts))
         }
         context.filesDir.resolve(fileNextIdName).writer().buffered().use {
