@@ -33,7 +33,6 @@ class NewPostActivity : AppCompatActivity() {
                 }
             }else {
                 binding.edit.setText(text)
-                val e=3
                 Snackbar.make(binding.root, text, BaseTransientBottomBar.LENGTH_INDEFINITE)
                     .setAction(android.R.string.ok) {
                         finish()

@@ -38,7 +38,7 @@ class PostRepositoryFileImpl(
         } else {
             nextId = 1L
         }
-        
+
         val filePost = context.filesDir.resolve(filePostName)
         if (filePost.exists()) {
             context.openFileInput(filePostName).bufferedReader().use {
@@ -86,9 +86,6 @@ class PostRepositoryFileImpl(
         }
     }
 
-    override fun videoById(id: Long) {
-
-    }
     override fun removeById(id: Long) {
         posts = posts.filter { it.id != id }
     }

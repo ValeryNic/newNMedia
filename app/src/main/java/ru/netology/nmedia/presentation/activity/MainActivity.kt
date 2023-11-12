@@ -46,15 +46,15 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun video(post: Post) {
-                if(post.videoByMe==true){
                     val intent = Intent(Intent.ACTION_VIEW, Uri.parse(post.videoURL.toString()))
                     startActivity(intent)
-                }
+
             }
 
             override fun edit(post: Post) {
                 viewModel.edit(post)
                 EditPostLauncher.launch(post.content)
+
             }
             override fun share(post: Post){
                 viewModel.shareById(post.id)

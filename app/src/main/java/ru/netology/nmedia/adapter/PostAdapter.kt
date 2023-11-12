@@ -47,20 +47,23 @@ class PostViewHolder(
 
             //like.setText(addCount( if(post.likedByMe)  post.countLikes+1 else post.countLikes-1))
             onLike.isChecked=post.likedByMe
-            onLike.text= addCount( post.countLikes+1)
+            onLike.text= addCount( post.countLikes)
             //like.text=addCount( if(post.likedByMe)  post.countLikes+1 else post.countLikes-1)
-            onShare.text= addCount(post.countShare+1)
+            onShare.text= addCount(post.countShare)
 
             onLike.setOnClickListener{
                 onInterationListener.like(post)
             }
             onShare.setOnClickListener{
-                if(post.videoByMe) {
                     onInterationListener.share(post)
-                }
             }
-            onVideoButton.isVisible=post.videoByMe
-            onVideoButton.setOnClickListener{
+
+            onVideoButton.setOnClickListener(){
+                onVideoButton.isVisible=true
+                onInterationListener.video(post)
+            }
+            onVideoButton1.setOnClickListener(){
+                onVideoButton1.isVisible=true
                 onInterationListener.video(post)
             }
             menu.setOnClickListener{

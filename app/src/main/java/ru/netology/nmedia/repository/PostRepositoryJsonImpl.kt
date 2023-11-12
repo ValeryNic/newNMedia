@@ -26,7 +26,6 @@ class PostRepositoryJsonImpl(context: Context,):PostRepository{
         likedByMe = false,
         countLikes = 4560,
         countShare =0,
-        videoByMe = false,
             videoURL = URL("https://www.youtube.com/watch?v=WhWc3b3KhnY")
         ),
         Post(
@@ -37,7 +36,6 @@ class PostRepositoryJsonImpl(context: Context,):PostRepository{
             likedByMe = false,
             countLikes = 999,
             countShare =0,
-            videoByMe = false,
             videoURL = URL("https://www.youtube.com/watch?v=WhWc3b3KhnY")
         ),
         Post(
@@ -48,7 +46,6 @@ class PostRepositoryJsonImpl(context: Context,):PostRepository{
             likedByMe = false,
             countLikes = 888,
             countShare =0,
-            videoByMe = false,
             videoURL = URL("https://www.youtube.com/watch?v=WhWc3b3KhnY")
         ),
 
@@ -86,7 +83,7 @@ class PostRepositoryJsonImpl(context: Context,):PostRepository{
         }
 
     }
-    override fun videoById(id: Long){}
+
 
     override fun removeById(id: Long) {
         posts=posts.filter { it.id !=id }
