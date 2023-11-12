@@ -65,10 +65,15 @@ class PostViewHolder(
                 onInterationListener.video(post)
             }
 <<<<<<< HEAD
+<<<<<<< HEAD
             onVideoButton1.isVisible=post.videoByMe
 =======
 >>>>>>> json
             onVideoButton1.setOnClickListener{
+=======
+            onVideoButton1.isVisible=post.videoByMe
+            onVideoButton.setOnClickListener{
+>>>>>>> fileAdd
                 onInterationListener.video(post)
             }
             menu.setOnClickListener{

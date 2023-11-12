@@ -28,10 +28,14 @@ class PostRepositoryJsonImpl(context: Context,):PostRepository{
         countShare =0,
         videoByMe = false,
 <<<<<<< HEAD
+<<<<<<< HEAD
         videoURL= URL("https://www.youtube.com/watch?v=WhWc3b3KhnY")
 =======
         videoURL = URL("https://www.youtube.com/watch?v=WhWc3b3KhnY")
 >>>>>>> json
+=======
+            videoURL = URL("https://www.youtube.com/watch?v=WhWc3b3KhnY")
+>>>>>>> fileAdd
         ),
         Post(
             id=nextId++,
@@ -42,12 +46,17 @@ class PostRepositoryJsonImpl(context: Context,):PostRepository{
             countLikes = 999,
             countShare =0,
 <<<<<<< HEAD
+<<<<<<< HEAD
             videoByMe =false,
             videoURL=URL("https://www.youtube.com/watch?v=WhWc3b3KhnY")
 =======
             videoByMe = false,
             videoURL = URL("https://www.youtube.com/watch?v=WhWc3b3KhnY")
 >>>>>>> json
+=======
+            videoByMe = false,
+            videoURL = URL("https://www.youtube.com/watch?v=WhWc3b3KhnY")
+>>>>>>> fileAdd
         ),
         Post(
             id=nextId++,
@@ -59,10 +68,14 @@ class PostRepositoryJsonImpl(context: Context,):PostRepository{
             countShare =0,
             videoByMe = false,
 <<<<<<< HEAD
+<<<<<<< HEAD
             videoURL=URL("https://www.youtube.com/watch?v=WhWc3b3KhnY")
 =======
             videoURL = URL("https://www.youtube.com/watch?v=WhWc3b3KhnY")
 >>>>>>> json
+=======
+            videoURL = URL("https://www.youtube.com/watch?v=WhWc3b3KhnY")
+>>>>>>> fileAdd
         ),
         Post(
             id = nextId++,
@@ -74,10 +87,14 @@ class PostRepositoryJsonImpl(context: Context,):PostRepository{
             countShare =0,
             videoByMe = false,
 <<<<<<< HEAD
+<<<<<<< HEAD
             videoURL=URL("https://www.youtube.com/watch?v=WhWc3b3KhnY")
 =======
             videoURL = URL("https://www.youtube.com/watch?v=WhWc3b3KhnY")
 >>>>>>> json
+=======
+            videoURL = URL("https://www.youtube.com/watch?v=WhWc3b3KhnY")
+>>>>>>> fileAdd
         ),
         Post(
             id = nextId++,
@@ -88,6 +105,7 @@ class PostRepositoryJsonImpl(context: Context,):PostRepository{
             countLikes = 888,
             countShare =0,
             videoByMe = false,
+<<<<<<< HEAD
 <<<<<<< HEAD
             videoURL=URL("https://www.youtube.com/watch?v=WhWc3b3KhnY")
         ),
@@ -137,7 +155,11 @@ class PostRepositoryJsonImpl(context: Context,):PostRepository{
 =======
             videoURL = URL("https://www.youtube.com/watch?v=WhWc3b3KhnY")
 >>>>>>> json
+=======
+            videoURL = URL("https://www.youtube.com/watch?v=WhWc3b3KhnY")
+>>>>>>> fileAdd
         ),
+
     ).reversed()
         set(value) {
             field = value
