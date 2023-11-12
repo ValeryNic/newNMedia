@@ -18,7 +18,7 @@ private val empty=Post(
     countShare = 0,
     content = "",
     countLikes = 0,
-    videoByMe = false,
+    videoByMe =false,
     videoURL = URL("https://www.youtube.com/watch?v=WhWc3b3KhnY")
 )
 

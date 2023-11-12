@@ -63,6 +63,10 @@ class PostViewHolder(
             onVideoButton.setOnClickListener{
                 onInterationListener.video(post)
             }
+            onVideoButton1.isVisible=post.videoByMe
+            onVideoButton1.setOnClickListener{
+                onInterationListener.video(post)
+            }
             menu.setOnClickListener{
                 PopupMenu(it.context,it).apply{
                     inflate(R.menu.menu_options)

@@ -5,6 +5,7 @@ import ru.netology.nmedia.dto.Post
 import androidx.lifecycle.LiveData
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import java.net.URL
 
 
 //class PostRepositoryInMemoryImpl: PostRepository {
@@ -25,7 +26,8 @@ class PostRepositoryJsonImpl(context: Context,):PostRepository{
         likedByMe = false,
         countLikes = 4560,
         countShare =0,
-        videoByMe = false
+        videoByMe = false,
+        videoURL= URL("https://www.youtube.com/watch?v=WhWc3b3KhnY")
         ),
         Post(
             id=nextId++,
@@ -35,7 +37,8 @@ class PostRepositoryJsonImpl(context: Context,):PostRepository{
             likedByMe = false,
             countLikes = 999,
             countShare =0,
-            videoByMe = false
+            videoByMe =false,
+            videoURL=URL("https://www.youtube.com/watch?v=WhWc3b3KhnY")
         ),
         Post(
             id=nextId++,
@@ -45,7 +48,8 @@ class PostRepositoryJsonImpl(context: Context,):PostRepository{
             likedByMe = false,
             countLikes = 888,
             countShare =0,
-            videoByMe = false
+            videoByMe = false,
+            videoURL=URL("https://www.youtube.com/watch?v=WhWc3b3KhnY")
         ),
         Post(
             id = nextId++,
@@ -55,7 +59,8 @@ class PostRepositoryJsonImpl(context: Context,):PostRepository{
             likedByMe = false,
             countLikes = 888,
             countShare =0,
-            videoByMe = false
+            videoByMe = false,
+            videoURL=URL("https://www.youtube.com/watch?v=WhWc3b3KhnY")
         ),
         Post(
             id = nextId++,
@@ -65,7 +70,8 @@ class PostRepositoryJsonImpl(context: Context,):PostRepository{
             likedByMe = false,
             countLikes = 888,
             countShare =0,
-            videoByMe = false
+            videoByMe = false,
+            videoURL=URL("https://www.youtube.com/watch?v=WhWc3b3KhnY")
         ),
         Post(
             id = nextId++,
@@ -75,7 +81,8 @@ class PostRepositoryJsonImpl(context: Context,):PostRepository{
             likedByMe = false,
             countLikes = 888,
             countShare =0,
-            videoByMe = false
+            videoByMe = false,
+            videoURL=URL("https://www.youtube.com/watch?v=WhWc3b3KhnY")
         ),
         Post(
             id = nextId++,
@@ -85,7 +92,8 @@ class PostRepositoryJsonImpl(context: Context,):PostRepository{
             likedByMe = false,
             countLikes = 888,
             countShare =0,
-            videoByMe = false
+            videoByMe = false,
+            videoURL=URL("https://www.youtube.com/watch?v=WhWc3b3KhnY")
         ),
         Post(
             id = nextId++,
@@ -95,7 +103,8 @@ class PostRepositoryJsonImpl(context: Context,):PostRepository{
             likedByMe = false,
             countLikes = 888,
             countShare =0,
-            videoByMe = false
+            videoByMe = false,
+            videoURL=URL("https://www.youtube.com/watch?v=WhWc3b3KhnY")
         ),
         Post(
             id = nextId++,
@@ -105,27 +114,8 @@ class PostRepositoryJsonImpl(context: Context,):PostRepository{
             likedByMe = false,
             countLikes = 888,
             countShare =0,
-            videoByMe = false
-        ),
-        Post(
-            id = nextId++,
-            author = "Нетология. Университет интернет-профессий будущего",
-            content = "Делиться впечатлениями о любимых фильмах легко, а что если рассказать так, чтобы все заскучали \uD83D\uDE34\n",
-            published = "22 сентября в 10:14",
-            likedByMe = false,
-            countLikes = 888,
-            countShare =0,
-            videoByMe = false
-        ),
-        Post(
-            id = nextId++,
-            author = "Нетология. Университет интернет-профессий будущего",
-            content = "Освоение новой профессии — это не только открывающиеся возможности и перспективы, но и настоящий вызов самому себе. Приходится выходить из зоны комфорта и перестраивать привычный образ жизни: менять распорядок дня, искать время для занятий, быть готовым к возможным неудачам в начале пути. В блоге рассказали, как избежать стресса на курсах профпереподготовки → http://netolo.gy/fPD",
-            published = "23 сентября в 10:12",
-            likedByMe = false,
-            countLikes = 888,
-            countShare =0,
-            videoByMe = false
+            videoByMe = false,
+            videoURL=URL("https://www.youtube.com/watch?v=WhWc3b3KhnY")
         ),
     ).reversed()
         set(value) {
