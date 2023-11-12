@@ -17,7 +17,6 @@ class PostRepositoryFileImpl(
     private var nextId = 1L
         set(value) {
             field = value
-            sync()
         }
     private val fileNextIdName = "next_id.json"
 
@@ -31,15 +30,6 @@ class PostRepositoryFileImpl(
     private val data = MutableLiveData(posts)
 
     init {
-        val filePost = context.filesDir.resolve(filePostName)
-        if (filePost.exists()) {
-            context.openFileInput(filePostName).bufferedReader().use {
-                posts = gson.fromJson(it, type)
-            }
-        } else {
-            posts = emptyList()
-        }
-
         val fileNextId = context.filesDir.resolve(fileNextIdName)
         if (fileNextId.exists()) {
             context.openFileInput(fileNextIdName).bufferedReader().use {
@@ -47,6 +37,15 @@ class PostRepositoryFileImpl(
             }
         } else {
             nextId = 1L
+        }
+        
+        val filePost = context.filesDir.resolve(filePostName)
+        if (filePost.exists()) {
+            context.openFileInput(filePostName).bufferedReader().use {
+                posts = gson.fromJson(it, type)
+            }
+        } else {
+            posts = emptyList()
         }
     }
 
@@ -95,7 +94,15 @@ class PostRepositoryFileImpl(
     }
 
     private fun sync() {
+        val filePostName="posts.json"
+        context.openFileOutput(filePostName, Context.MODE_PRIVATE).bufferedWriter().use {
+            it.write(gson.toJson(posts))
+        }
         context.filesDir.resolve(filePostName).writer().buffered().use {
+            it.write(gson.toJson(posts))
+        }
+        val fileNextIdName="next_id.json"
+        context.openFileOutput(fileNextIdName, Context.MODE_PRIVATE).bufferedWriter().use {
             it.write(gson.toJson(posts))
         }
         context.filesDir.resolve(fileNextIdName).writer().buffered().use {
