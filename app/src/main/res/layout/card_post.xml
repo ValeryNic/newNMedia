@@ -81,7 +81,7 @@
     <Button
         android:id="@+id/onVideoButton"
         style="@style/Widget.AppTheme.IconButton"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:checkable="true"
         android:contentDescription="@string/like"
@@ -92,12 +92,30 @@
         android:paddingBottom="0dp"
         android:text="video"
         android:visibility="invisible"
-        app:icon="@drawable/ic_add_24"
+        app:icon="@drawable/ic_video_24"
         app:layout_constraintBottom_toTopOf="@id/barrier_top1"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/content"
-        tools:visibility="invisible" />
+        tools:visibility="visible" />
+
+    <ImageButton
+        android:id="@+id/onVideoButton1"
+        style="@style/Widget.AppTheme.IconButton"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:checkable="true"
+        android:contentDescription="@string/like"
+        android:insetTop="0dp"
+        android:insetBottom="0dp"
+        android:maxHeight="48dp"
+        android:paddingTop="0dp"
+        android:paddingBottom="0dp"
+        android:src="@drawable/videoImage"
+        app:icon="@drawable/ic_video_24"
+        app:layout_constraintBottom_toTopOf="@id/barrier_top1"
+        app:layout_constraintStart_toEndOf="@+id/onVideoButton"
+        app:layout_constraintTop_toBottomOf="@id/content"
+        tools:visibility="visible" />
 
     <androidx.constraintlayout.widget.Barrier
         android:id="@+id/barrier_top1"
