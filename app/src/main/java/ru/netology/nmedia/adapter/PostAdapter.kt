@@ -58,12 +58,12 @@ class PostViewHolder(
                     onInterationListener.share(post)
             }
 
+            onVideoButton.isVisible=post.videoURL.toString().isNotBlank()
+            onVideoButton1.isVisible=post.videoURL.toString().isNotBlank()
             onVideoButton.setOnClickListener(){
-                onVideoButton.isVisible=true
                 onInterationListener.video(post)
             }
             onVideoButton1.setOnClickListener(){
-                onVideoButton1.isVisible=true
                 onInterationListener.video(post)
             }
             menu.setOnClickListener{
