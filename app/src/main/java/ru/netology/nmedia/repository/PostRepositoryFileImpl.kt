@@ -13,14 +13,52 @@ class PostRepositoryFileImpl(
     private val gson = Gson()
     private val type = TypeToken.getParameterized(List::class.java, Post::class.java).type
     private val filePostName = "posts.json"
-
-    private var nextId = 1L
-        set(value) {
-            field = value
-        }
     private val fileNextIdName = "next_id.json"
 
-    private var posts = emptyList<Post>()
+    //private var nextId = 1L - есть в PostRepositoryJsonImpl
+    //    set(value) {
+    //        field = value
+    //    }
+    //private val fileNextIdName = "next_id.json"
+
+    //Variant1=======
+    //private var posts = emptyList<Post>()
+    //    set(value) {
+    //        field = value
+    //        data.value = value
+    //        sync()
+    //    }
+
+    //private val data = MutableLiveData(posts)
+
+    //init {
+    //    val fileNextId = context.filesDir.resolve(fileNextIdName)
+    //    if (fileNextId.exists()) {
+    //        context.openFileInput(fileNextIdName).bufferedReader().use {
+    //            nextId = gson.fromJson(it, Long::class.java)
+    //        }
+    //    } else {
+    //        nextId = 1L
+    //    }
+
+    //    val filePost = context.filesDir.resolve(filePostName)
+    //    if (filePost.exists()) {
+    //        context.openFileInput(filePostName).bufferedReader().use {
+    //            posts = gson.fromJson(it, type)
+    //        }
+    //    } else {
+    //        posts = emptyList()
+    //    }
+    //}
+
+    //Variant2====>>>
+    //Удалите sync из сеттера. Лучше явно вызывать его, иначе он в блоке init вызывается
+    // и перезаписывает next_id.json дефолтными данными
+    //Либо разбейте sync на 2 функции, чтобы они вызывались независимо друг от друга
+    //Можно вообще без блока init, тогда сеттер не вызовется
+    var nextId = readIdFromFile()
+
+    private var posts = readPostsFromFile()
         set(value) {
             field = value
             data.value = value
@@ -29,28 +67,28 @@ class PostRepositoryFileImpl(
 
     private val data = MutableLiveData(posts)
 
-    init {
-        val fileNextId = context.filesDir.resolve(fileNextIdName)
-        if (fileNextId.exists()) {
-            context.openFileInput(fileNextIdName).bufferedReader().use {
-                nextId = gson.fromJson(it, Long::class.java)
-            }
-        } else {
-            nextId = 1L
-        }
-
+    private fun readPostsFromFile(): List<Post> {
         val filePost = context.filesDir.resolve(filePostName)
-        if (filePost.exists()) {
+        return if (filePost.exists()) {
             context.openFileInput(filePostName).bufferedReader().use {
-                posts = gson.fromJson(it, type)
+                gson.fromJson(it, type)
             }
         } else {
-            posts = emptyList()
+            emptyList()
         }
     }
 
-
-
+    private fun readIdFromFile(): Long {
+        val fileNextId = context.filesDir.resolve(fileNextIdName)
+        return if (fileNextId.exists()) {
+            context.openFileInput(fileNextIdName).bufferedReader().use {
+                gson.fromJson(it, Long::class.java)
+            }
+        } else {
+            1L
+        }
+    }
+    //<<<<<Variant2
     override fun getAll(): LiveData<List<Post>> = data
 
     override fun save(post: Post) {

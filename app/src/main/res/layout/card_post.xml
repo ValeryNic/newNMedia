@@ -95,7 +95,7 @@
         app:icon="@drawable/ic_video_24"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/content"
-        tools:visibility="visible" />
+         />
 
     <ImageButton
         android:id="@+id/onVideoButton1"
@@ -107,7 +107,6 @@
         app:layout_constraintTop_toBottomOf="@id/content"
         app:layout_constraintStart_toEndOf="@id/onVideoButton"
         app:layout_constraintBottom_toTopOf="@id/barrier_top1"
-        tools:visibility="visible"
         />
 
     <androidx.constraintlayout.widget.Barrier

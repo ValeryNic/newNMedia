@@ -15,46 +15,43 @@ class PostRepositoryJsonImpl(context: Context,):PostRepository{
     private val type = TypeToken.getParameterized(List::class.java, Post::class.java).type
     private val postKey = "posts"
     private val nextIdKey = "next_id"
-    private var nextId:Long=0
+    private var nextId:Long=1
 
-    private var posts = listOf(
-        Post(
-        id=nextId++,
-        author = "Нетология. Университет интернет-профессий.",
-        published =  "21 мая в 18.36",
-        content = "Привет, это новая Нетология! Когда-то Нетология начиналась с интенсивов по онлайн-маркетингу. Затем появились курсы по дизайну, разработке, аналитике и управлению. Мы растём сами и помогаем расти студентам: от новичков до уверенных профессионалов. Но самое важное остаётся с нами: мы верим, что в каждом уже есть сила, которая заставляет хотеть больше, целиться выше, бежать быстрее. Наша миссия — помочь встать на путь роста и начать цепочку перемен → http://netolo.gy/fyb",
-        likedByMe = false,
-        countLikes = 4560,
-        countShare =0,
-            videoURL = URL("https://www.youtube.com/watch?v=WhWc3b3KhnY")
-        ),
-        Post(
-            id=nextId++,
-            author = "Нетология. Университет интернет-профессий.",
-            published =  "21 мая в 18.36",
-            content = "Привет, это новая Нетология! Когда-то Нетология начиналась с интенсивов по онлайн-маркетингу. Затем появились курсы по дизайну, разработке, аналитике и управлению. Мы растём сами и помогаем расти студентам: от новичков до уверенных профессионалов. Но самое важное остаётся с нами: мы верим, что в каждом уже есть сила, которая заставляет хотеть больше, целиться выше, бежать быстрее. Наша миссия — помочь встать на путь роста и начать цепочку перемен → http://netolo.gy/fyb",
-            likedByMe = false,
-            countLikes = 999,
-            countShare =0,
-            videoURL = URL("https://www.youtube.com/watch?v=WhWc3b3KhnY")
-        ),
-        Post(
-            id=nextId++,
-            author = "Нетология. Университет интернет-профессий.",
-            published =  "21 мая в 18.36",
-            content = "Привет, это новая Нетология! Когда-то Нетология начиналась с интенсивов по онлайн-маркетингу. Затем появились курсы по дизайну, разработке, аналитике и управлению. Мы растём сами и помогаем расти студентам: от новичков до уверенных профессионалов. Но самое важное остаётся с нами: мы верим, что в каждом уже есть сила, которая заставляет хотеть больше, целиться выше, бежать быстрее. Наша миссия — помочь встать на путь роста и начать цепочку перемен → http://netolo.gy/fyb",
-            likedByMe = false,
-            countLikes = 888,
-            countShare =0,
-            videoURL = URL("https://www.youtube.com/watch?v=WhWc3b3KhnY")
-        ),
+   var posts=listOf(
+       Post (
+           id = 0,
+           author = "Me",
+           published = "",
+           likedByMe = false,
+           countShare = 0,
+           content = "",
+           countLikes = 0,
+           videoURL = URL("https://www.youtube.com/watch?v=WhWc3b3KhnY")
+       ),
+       Post(
+           id = 0,
+           author = "Me",
+           published = "",
+           likedByMe = false,
+           countShare = 0,
+           content = "",
+           countLikes = 0,
+           videoURL = URL("https://www.youtube.com/watch?v=WhWc3b3KhnY")
+       ),
+       Post(
+       id = 0,
+       author = "Me",
+       published = "",
+       likedByMe = false,
+       countShare = 0,
+       content = "",
+       countLikes = 0,
+       videoURL = URL("https://www.youtube.com/watch?v=WhWc3b3KhnY")
+       ),
+   )
 
-    ).reversed()
-        set(value) {
-            field = value
-            data.value = value
-            sync()
-        }
+
+
     private val data=MutableLiveData(posts)
     init {
         prefs.getString(postKey, null)?.let {
