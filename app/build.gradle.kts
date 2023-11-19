@@ -41,6 +41,9 @@ android {
 dependencies {
     implementation("androidx.navigation:navigation-fragment-ktx:2.7.5")
     implementation("androidx.navigation:navigation-ui-ktx:2.7.5")
+    implementation("androidx.fragment:fragment-ktx:1.6.2")
+    implementation("androidx.lifecycle:lifecycle-livedata-core-ktx:2.6.2")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2")
     val coreKtxVersion = "1.12.0"
     implementation("androidx.core:core-ktx:$coreKtxVersion")
     implementation("androidx.activity:activity-ktx:1.8.0")
@@ -50,7 +53,7 @@ dependencies {
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
-    val recyclerview_version="1.3.1"
+    val recyclerview_version="1.3.2"
     implementation("androidx.recyclerview:recyclerview:$recyclerview_version")
     val gson_version= "2.10.1"
     implementation("com.google.code.gson:gson:$gson_version")
